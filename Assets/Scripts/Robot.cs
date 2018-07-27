@@ -45,7 +45,6 @@ public class Robot : MonoBehaviour {
 	  agent.SetDestination(player.position);
 	  if (Vector3.Distance(transform.position, player.position) < range
 	      && Time.time - timeLastFired > fireRate) {
-	    // 6
 	    timeLastFired = Time.time;
 	    fire();
 	  }
@@ -77,7 +76,6 @@ public class Robot : MonoBehaviour {
 	  }
 	}
 
-	// 2
 	IEnumerator DestroyRobot() {
 	  yield return new WaitForSeconds(1.5f);
 	  Destroy(gameObject);

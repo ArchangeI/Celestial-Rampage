@@ -16,7 +16,6 @@ public class Game : MonoBehaviour {
 	public int waveCountdown;
 	public bool isGameOver;
 
-	// 1
 	void Start() {
 	  singleton = this;
 		StartCoroutine("increaseScoreEachSecond");
@@ -28,7 +27,6 @@ public class Game : MonoBehaviour {
 	  SpawnRobots();
 	}
 
-	// 2
 	private void SpawnRobots() {
 	  foreach (RobotSpawn spawn in spawns) {
 	    spawn.SpawnRobot();
@@ -48,7 +46,7 @@ public class Game : MonoBehaviour {
 	    waveCountdown--;
 	    gameUI.SetWaveText(waveCountdown);
 
-	    // Spawn next wave and restart count down
+	    //next wave , restart count down
 	    if (waveCountdown == 0) {
 	      SpawnRobots();
 	      waveCountdown = 30;
@@ -81,7 +79,6 @@ public class Game : MonoBehaviour {
 	  }
 	}
 
-	// 1
 	public void OnGUI() {
 	  if (isGameOver && Cursor.visible == false) {
 	    Cursor.visible = true;
@@ -89,7 +86,6 @@ public class Game : MonoBehaviour {
 	  }
 	}
 
-	// 2
 	public void GameOver() {
 	  isGameOver = true;
 	  Time.timeScale = 0;
@@ -98,18 +94,15 @@ public class Game : MonoBehaviour {
 	  gameOverPanel.SetActive(true);
 	}
 
-	// 3
 	public void RestartGame() {
 	  SceneManager.LoadScene(Constants.SceneBattle);
 	  gameOverPanel.SetActive(true);
 	}
 
-	// 4
 	public void Exit() {
 	  Application.Quit();
 	}
 
-	// 5
 	public void MainMenu() {
 	  SceneManager.LoadScene(Constants.SceneMenu);
 	}

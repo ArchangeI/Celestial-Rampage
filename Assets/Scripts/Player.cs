@@ -9,7 +9,6 @@ public class Player : MonoBehaviour {
 	private GunEquipper gunEquipper;
 	private Ammo ammo;
 	public Game game;
-	public AudioClip playerDead;
 
 	// Use this for initialization
 	void Start () {
@@ -24,8 +23,6 @@ public class Player : MonoBehaviour {
 	    int effectiveArmor = armor * 2;
 	    effectiveArmor -= healthDamage;
 
-	    // If there is still armor, don't need to process
-	    // health damage
 	    if (effectiveArmor > 0) {
 	      armor = effectiveArmor / 2;
 				gameUI.SetArmorText(armor);
@@ -40,7 +37,6 @@ public class Player : MonoBehaviour {
 		gameUI.SetHealthText(health);
 
 	  if (health <= 0) {
-			GetComponent<AudioSource>().PlayOneShot(playerDead);
 			game.GameOver();
 	  }
 	}
@@ -66,7 +62,6 @@ public class Player : MonoBehaviour {
 		gameUI.SetArmorText(armor);
 	}
 
-	// 2
 	private void pickupAssaultRifleAmmo() {
 	  ammo.AddAmmo(Constants.AssaultRifle, 50);
 		gameUI.SetPickUpText("Assault rifle ammo picked up + 50 ammo");

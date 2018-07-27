@@ -37,18 +37,12 @@ public class Robot : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update() {
-	  // 2
 	  if (isDead) {
 	    return;
 	  }
 
-	  // 3
 	  transform.LookAt(player);
-
-	  // 4
 	  agent.SetDestination(player.position);
-
-	  // 5
 	  if (Vector3.Distance(transform.position, player.position) < range
 	      && Time.time - timeLastFired > fireRate) {
 	    // 6
